@@ -1,4 +1,4 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI topScoreText;
     public GameObject playButton;
     public GameObject replayButton;
+    public GameObject quitButton;
     public GameObject gameOver;
     public GameObject logo;
 
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         logo.SetActive(true);
         playButton.SetActive(true);
         replayButton.SetActive(false);
+        quitButton.SetActive(false);
 
         Time.timeScale = 0f;
         player.enabled = false;
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         playButton.SetActive(false);
         replayButton.SetActive(false);
+        quitButton.SetActive(false);
         gameOver.SetActive(false);
         logo.SetActive(false);
 
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour
         logo.SetActive(false);
         playButton.SetActive(false);
         replayButton.SetActive(true);
+        quitButton.SetActive(true);
 
         if (score > topScore)
         {
@@ -101,4 +105,11 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
         topScoreText.text = "Top Score: " + topScore;
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game"); // Apare doar în editor
+        Application.Quit(); // Închide aplicația în build-ul final
+    }
+
 }
